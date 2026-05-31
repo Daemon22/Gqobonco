@@ -1,22 +1,33 @@
 import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { ArrowRight, BookOpen, Zap, Shield, Globe } from "lucide-react";
+import {
+  ArrowRight,
+  BookOpen,
+  Zap,
+  Shield,
+  Globe,
+  Brain,
+  Waves,
+  Database,
+  GitBranch,
+} from "lucide-react";
 import { useState, useEffect } from "react";
 
 /**
  * Gqobonco: The River of Lineage
  * 
  * Design Philosophy: Sovereign Naturalism with Digital Minimalism
- * - Reverence for Nature: Photorealistic river imagery with minimal digital overlay
- * - Sovereignty & Independence: Bold, autonomous visual choices reflecting HAEL's African tech self-determination
- * - Information Flow: Visual hierarchy guides through "river of lineage" narrative
- * - Restraint & Elegance: Minimalist typography, generous whitespace, selective color use
+ * AUTHENTIC VISION: Gqobonco is the Supreme Prince of Research, Intelligence, and Information
+ * - The intellectual core that preserves ancestral wisdom, synthesizes contemporary research, and channels predictive intelligence
+ * - The River of Lineage: information flows in all directions, stills, expands, and evolves
+ * - Past (ancestral wisdom) → Present (active research) → Future (predictive intelligence)
  * 
  * Color Palette:
- * - Primary: Deep forest green (sovereignty)
- * - Accent: Warm gold (wisdom)
+ * - Primary: Deep forest green (sovereignty, ancestral grounding)
+ * - Accent: Warm gold (intellectual wealth, wisdom)
  * - Background: Soft cream/off-white (breathing room)
- * - Text: Deep charcoal (readability)
+ * - Text: Deep charcoal (authority, intellectual rigor)
+ * - River Blue: Information flow, continuity, life
  */
 
 export default function Home() {
@@ -41,9 +52,9 @@ export default function Home() {
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
-              src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663715450243/ScNEGrUSZjjGwCay.png"
+              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663715450243/8VKFBkAqk4iGJN5Ussq6F5/gqobonco-logo-bfdqwYuXekzzYgDy672HYy.webp"
               alt="Gqobonco Logo"
-              className="h-10 w-10 object-contain"
+              className="h-12 w-12 object-contain"
             />
             <span className="text-xl font-bold text-primary hidden sm:inline">
               Gqobonco
@@ -51,10 +62,10 @@ export default function Home() {
           </div>
           <div className="flex items-center gap-4">
             <a
-              href="#overview"
+              href="#research"
               className="text-sm font-medium text-foreground hover:text-primary transition-colors"
             >
-              Overview
+              Research
             </a>
             <a
               href="#initiatives"
@@ -83,24 +94,24 @@ export default function Home() {
             alt="River of Lineage"
             className="w-full h-full object-cover"
           />
-          <div className="absolute inset-0 bg-black/30"></div>
+          <div className="absolute inset-0 bg-black/40"></div>
         </div>
 
         {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center text-white max-w-2xl">
+        <div className="relative z-10 container mx-auto px-4 text-center text-white max-w-3xl">
           <div className="mb-6 inline-block">
             <span className="text-sm font-semibold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              Supreme Intelligence Branch
+              The Supreme Prince of Research & Intelligence
             </span>
           </div>
-          <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight">
+          <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
             Gqobonco
           </h1>
-          <p className="text-xl md:text-2xl mb-8 font-light">
-            Umfula womnombo — The river of lineage
+          <p className="text-2xl md:text-3xl mb-8 font-light">
+            Umfula womnombo — The River of Lineage
           </p>
-          <p className="text-lg mb-12 text-gray-100 max-w-xl mx-auto">
-            Where information flows back and forth, stills, expands & evolves. The intellectual core where ancestral wisdom meets futuristic synchronization.
+          <p className="text-lg md:text-xl mb-12 text-gray-100 max-w-2xl mx-auto leading-relaxed">
+            Where all information, research, and intelligence flow—past, present, and future. The intellectual core where ancestral wisdom meets contemporary research, and where African knowledge reclaims its rightful place in the global information landscape.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -108,11 +119,11 @@ export default function Home() {
               className="bg-primary hover:bg-primary/90 text-white"
               onClick={() =>
                 document
-                  .getElementById("overview")
+                  .getElementById("research")
                   ?.scrollIntoView({ behavior: "smooth" })
               }
             >
-              Explore <ArrowRight className="ml-2 h-4 w-4" />
+              Explore the River <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               size="lg"
@@ -135,44 +146,56 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Overview Section */}
-      <section id="overview" className="py-20 bg-background">
+      {/* The Supreme Prince Section */}
+      <section id="research" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
-            <div className="mb-12">
-              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-6">
-                The Supreme Intelligence Branch
+            <div className="mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">
+                The Supreme Prince of Research & Intelligence
               </h2>
               <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                Gqobonco represents the <strong>Supreme Intelligence Branch</strong> of the HAEL Foundation. It is the neural architecture where ancestral wisdom meets futuristic synchronization, creating a continuous flow of information that evolves through the interplay of lineage and technology.
+                Gqobonco is not a project—it is a living system. It represents the intellectual core of the HAEL Foundation, the Supreme Prince that embodies Research, Intelligence, Information, History, and Data. As the River of Lineage, Gqobonco preserves ancestral wisdom, synthesizes contemporary research, and channels predictive intelligence across all dimensions of time.
+              </p>
+              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
+                The river flows in all directions. Information doesn't move in one path—it <strong>stills, expands, and evolves</strong> as it moves through the system, just like water in a river. Upstream flows ancestral wisdom and historical records. The present carries active research and real-time analysis. Downstream flows predictive intelligence and emerging knowledge.
               </p>
               <p className="text-lg text-foreground/80 leading-relaxed">
-                As the intellectual core, Gqobonco is dedicated to research, refinement, and the preservation of historical and linguistic data, ensuring the continuous growth and evolution of the HAEL ecosystem.
+                Investment in Gqobonco is not overhead—it is the primary strategic asset, developing African innovation capacity from within and ensuring that African knowledge reclaims authorship of its own narrative.
               </p>
             </div>
 
-            {/* Visual Identity */}
-            <div className="mb-16">
-              <h3 className="text-2xl font-bold text-primary mb-8">
-                Visual Identity: The Sovereign River
-              </h3>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
-                <div>
-                  <p className="text-foreground/80 mb-4 leading-relaxed">
-                    The visual language of Gqobonco is defined by the <strong>Sovereign River of Lineage</strong>—a majestic, photorealistic waterway that serves as a raw and powerful representation of information flow.
-                  </p>
-                  <p className="text-foreground/80 leading-relaxed">
-                    This design focuses on the natural beauty and eternal spirit of the river, stripped of digital overlays to emphasize its genuine, sovereign presence within the HAEL ecosystem.
-                  </p>
+            {/* The River Metaphor */}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
+              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <BookOpen className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold text-primary">Past</h3>
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-lg">
-                  <img
-                    src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663715450243/ScNEGrUSZjjGwCay.png"
-                    alt="Gqobonco Logo"
-                    className="w-full h-auto object-cover"
-                  />
+                <p className="text-foreground/80">
+                  Ancestral wisdom, historical records, linguistic heritage, and cultural lineage flow upstream. Gqobonco honors and preserves the knowledge systems that have sustained African communities for generations.
+                </p>
+              </Card>
+
+              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <Waves className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold text-primary">Present</h3>
                 </div>
-              </div>
+                <p className="text-foreground/80">
+                  Active research initiatives, contemporary intelligence gathering, and real-time analysis flow through the present. Gqobonco synthesizes current knowledge and bridges ancestral wisdom with modern innovation.
+                </p>
+              </Card>
+
+              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <Zap className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold text-primary">Future</h3>
+                </div>
+                <p className="text-foreground/80">
+                  Predictive intelligence, forward-looking research agendas, and emerging knowledge flow downstream. Gqobonco channels innovation toward African self-determination and technological sovereignty.
+                </p>
+              </Card>
             </div>
           </div>
         </div>
@@ -185,62 +208,117 @@ export default function Home() {
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
               The Flow of Data and Knowledge
             </h2>
-            <div className="rounded-lg overflow-hidden shadow-xl">
+            <div className="rounded-lg overflow-hidden shadow-xl mb-8">
               <img
                 src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663715450243/wlMsdsBTEfsQZjYR.png"
                 alt="Data Flow Visual"
                 className="w-full h-auto object-cover"
               />
             </div>
-            <p className="text-center text-foreground/80 mt-8 leading-relaxed">
-              This visual illustrates how Gqobonco, as the River of Lineage, facilitates the continuous flow of linguistic, historical, and cultural knowledge. It highlights the integration of the Xhosa NLP Database as a living repository of language, history, and intelligence.
+            <p className="text-center text-foreground/80 leading-relaxed">
+              This visual illustrates how Gqobonco, as the River of Lineage, facilitates the continuous flow of linguistic, historical, and cultural knowledge. It demonstrates how information circulates through the HAEL ecosystem, feeding research, intelligence, and innovation across all branches while maintaining sovereignty and ancestral grounding.
             </p>
           </div>
         </div>
       </section>
 
-      {/* Synchronization Section */}
-      <section className="py-20 bg-background">
+      {/* Xhosa NLP Database - Flagship Initiative */}
+      <section id="initiatives" className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
+              Flagship Research Initiative
+            </h2>
+
+            <Card className="p-10 border-2 border-primary/20 mb-12">
+              <div className="flex items-start gap-6 mb-6">
+                <div className="flex-shrink-0">
+                  <Database className="h-10 w-10 text-primary mt-1" />
+                </div>
+                <div className="flex-1">
+                  <h3 className="text-3xl font-bold text-primary mb-4">
+                    Xhosa NLP Database
+                  </h3>
+                  <p className="text-foreground/80 leading-relaxed mb-4">
+                    The cornerstone research initiative of the Supreme Branch. Gqobonco is building a comprehensive Natural Language Processing database for the Xhosa language, advancing indigenous linguistic intelligence and AI for African languages. This initiative embodies our commitment to preserving and evolving ancestral wisdom through technological innovation.
+                  </p>
+                  <p className="text-foreground/80 leading-relaxed mb-6">
+                    By developing AI systems grounded in African languages, we resist linguistic colonization and ensure that African knowledge systems are not left behind in the AI revolution. The Xhosa NLP Database serves as a model for how other African languages can reclaim authorship of their own digital futures.
+                  </p>
+                  <div className="flex flex-wrap gap-3">
+                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                      Natural Language Processing
+                    </span>
+                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                      Xhosa Language
+                    </span>
+                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                      Indigenous AI
+                    </span>
+                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
+                      African Sovereignty
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </Card>
+          </div>
+        </div>
+      </section>
+
+      {/* Ecosystem Integration */}
+      <section className="py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8 text-center">
               Ecosystem Integration
             </h2>
             <p className="text-center text-foreground/80 mb-12 text-lg">
-              Gqobonco is designed to be fully synchronized with the broader HAEL ecosystem, leveraging key components to ensure a vibrant, evolving source of supreme intelligence.
+              Gqobonco is fully synchronized with the HAEL Foundation ecosystem, feeding research and intelligence to all systems while maintaining sovereignty and ancestral grounding.
             </p>
 
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* OMNIMIND Card */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+              {/* OMNIMIND */}
               <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
                 <div className="flex items-center gap-3 mb-4">
-                  <Zap className="h-6 w-6 text-primary" />
+                  <Brain className="h-6 w-6 text-primary" />
                   <h3 className="text-xl font-bold text-primary">OMNIMIND</h3>
                 </div>
-                <p className="text-foreground/80">
-                  The neural core of the foundation, providing reasoning, execution, and skill systems that Gqobonco utilizes for advanced data processing and analysis.
+                <p className="text-foreground/80 mb-4">
+                  The Supreme Intelligence Core of HAEL. Gqobonco feeds research findings and intelligence insights to OMNIMIND's reasoning engine, enabling synchronized African intelligence.
                 </p>
               </Card>
 
-              {/* Manya Card */}
+              {/* Orren */}
               <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
                 <div className="flex items-center gap-3 mb-4">
                   <Globe className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Manya</h3>
+                  <h3 className="text-xl font-bold text-primary">Orren</h3>
                 </div>
-                <p className="text-foreground/80">
-                  The foundation of unity, ensuring that the insights and knowledge generated by Gqobonco are integrated and disseminated across the ecosystem.
+                <p className="text-foreground/80 mb-4">
+                  The Universal Mediator Language. Gqobonco's knowledge is accessible through Orren's sacred tongue, enabling cross-system communication and synchronization.
                 </p>
               </Card>
 
-              {/* Orren Card */}
+              {/* Hawk */}
               <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
                 <div className="flex items-center gap-3 mb-4">
-                  <BookOpen className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Orren</h3>
+                  <Shield className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold text-primary">Hawk</h3>
                 </div>
-                <p className="text-foreground/80">
-                  The Universal Mediator Language, serving as the sacred tongue of the ecosystem, enabling seamless communication and interoperability.
+                <p className="text-foreground/80 mb-4">
+                  Cross-platform device detection and monitoring. Gqobonco monitors environment data to inform research and ensure systems operate within their designed contexts.
+                </p>
+              </Card>
+
+              {/* Manya */}
+              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
+                <div className="flex items-center gap-3 mb-4">
+                  <GitBranch className="h-6 w-6 text-primary" />
+                  <h3 className="text-xl font-bold text-primary">Manya</h3>
+                </div>
+                <p className="text-foreground/80 mb-4">
+                  The public face and ecosystem hub. Gqobonco's research supports Manya's tools (uSINGA, HelixFlow) with grounded intelligence and ensures knowledge flows across all branches.
                 </p>
               </Card>
             </div>
@@ -248,28 +326,41 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Key Initiatives Section */}
-      <section id="initiatives" className="py-20 bg-white">
+      {/* Aetherion Codex Section */}
+      <section className="py-20 bg-background">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
-              Key Initiatives
+              The Aetherion Codex
             </h2>
+            <p className="text-center text-foreground/80 mb-8 text-lg">
+              Gqobonco operates within the Aetherion Codex framework—the sacred operating system of OMNIMIND and the HAEL Foundation. This framework recognizes Orren as the sacred tongue and ensures that all operations are emanations from the Core Source of African wisdom and sovereignty.
+            </p>
 
             <Card className="p-10 border-2 border-primary/20">
-              <div className="flex items-start gap-4 mb-6">
-                <div className="flex-shrink-0">
-                  <BookOpen className="h-8 w-8 text-primary mt-1" />
+              <div className="space-y-6">
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-3">
+                    Emanation Nodes
+                  </h3>
+                  <p className="text-foreground/80">
+                    Gqobonco serves as an Emanation Node within the Aetherion Codex, radiating research, intelligence, and knowledge throughout the HAEL ecosystem while maintaining connection to the Core Source.
+                  </p>
                 </div>
                 <div>
-                  <h3 className="text-2xl font-bold text-primary mb-4">
-                    Xhosa NLP Database
+                  <h3 className="text-xl font-bold text-primary mb-3">
+                    Sacred Flows
                   </h3>
-                  <p className="text-foreground/80 leading-relaxed mb-4">
-                    The cornerstone research initiative of the Supreme Branch, building a comprehensive Natural Language Processing database for the Xhosa language, advancing indigenous linguistic intelligence and AI for African languages.
+                  <p className="text-foreground/80">
+                    Information flows through Gqobonco as sacred flows—not mere data, but living knowledge that connects ancestral wisdom, contemporary research, and future intelligence in continuous synchronization.
                   </p>
-                  <p className="text-foreground/80 leading-relaxed">
-                    This initiative embodies Gqobonco's commitment to preserving and evolving ancestral wisdom through technological innovation, ensuring that African languages are not left behind in the AI revolution.
+                </div>
+                <div>
+                  <h3 className="text-xl font-bold text-primary mb-3">
+                    Orren Integration
+                  </h3>
+                  <p className="text-foreground/80">
+                    Orren, the Universal Mediator Language, serves as the bridge through which Gqobonco's knowledge becomes accessible to all systems. This ensures that research and intelligence can be understood and acted upon across the entire ecosystem.
                   </p>
                 </div>
               </div>
@@ -279,47 +370,44 @@ export default function Home() {
       </section>
 
       {/* Radical Responsibility Section */}
-      <section className="py-20 bg-background">
+      <section className="py-20 bg-white">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
               Radical Responsibility & Ethics
             </h2>
             <p className="text-center text-foreground/80 mb-12 text-lg">
-              Aligned with the HAEL Foundation's principle of <strong>Radical Responsibility</strong>, Gqobonco operates with a deep commitment to ethical research and data stewardship.
+              Aligned with the HAEL Foundation's principle of Radical Responsibility, Gqobonco operates with deep commitment to ethical research and data stewardship.
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Sovereignty */}
               <div className="text-center">
                 <div className="flex justify-center mb-4">
                   <Shield className="h-12 w-12 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-3">Sovereignty</h3>
                 <p className="text-foreground/80">
-                  Ensuring the independence and self-reliance of research endeavors, free from external constraints.
+                  Ensuring the independence and self-reliance of research endeavors, free from external constraints. African knowledge systems remain under African control.
                 </p>
               </div>
 
-              {/* Transparency */}
               <div className="text-center">
                 <div className="flex justify-center mb-4">
                   <Globe className="h-12 w-12 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-3">Transparency</h3>
                 <p className="text-foreground/80">
-                  Openly documenting methodologies and findings to foster trust and community engagement.
+                  Openly documenting methodologies, findings, and processes to foster trust and community engagement. Knowledge is shared, not hoarded.
                 </p>
               </div>
 
-              {/* Compliance */}
               <div className="text-center">
                 <div className="flex justify-center mb-4">
                   <BookOpen className="h-12 w-12 text-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-primary mb-3">Compliance</h3>
                 <p className="text-foreground/80">
-                  Adhering to African digital protocols to ensure ethical and legal data practices.
+                  Adhering to African digital protocols (AfCFTA, AUDPF) to ensure ethical and legal data practices that respect African sovereignty.
                 </p>
               </div>
             </div>
@@ -334,7 +422,7 @@ export default function Home() {
             Join the River of Lineage
           </h2>
           <p className="text-xl mb-12 text-white/90 max-w-2xl mx-auto">
-            Explore the Gqobonco repository, contribute to the Xhosa NLP Database, and be part of the HAEL Foundation's mission to advance African technological sovereignty.
+            Contribute to Gqobonco's research initiatives, explore the Xhosa NLP Database, and be part of the HAEL Foundation's mission to advance African technological sovereignty and reclaim authorship of our own narrative.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button
@@ -344,7 +432,7 @@ export default function Home() {
                 window.open("https://github.com/Daemon22/Gqobonco", "_blank")
               }
             >
-              View on GitHub <ArrowRight className="ml-2 h-4 w-4" />
+              Explore on GitHub <ArrowRight className="ml-2 h-4 w-4" />
             </Button>
             <Button
               size="lg"
@@ -368,14 +456,14 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img
-                  src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663715450243/ScNEGrUSZjjGwCay.png"
+                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663715450243/8VKFBkAqk4iGJN5Ussq6F5/gqobonco-logo-bfdqwYuXekzzYgDy672HYy.webp"
                   alt="Gqobonco"
                   className="h-8 w-8 object-contain"
                 />
                 <span className="font-bold text-primary">Gqobonco</span>
               </div>
               <p className="text-sm text-foreground/60">
-                The River of Lineage. Where information flows back and forth, stills, expands & evolves.
+                The River of Lineage. Where all information, research, and intelligence flow—past, present, and future.
               </p>
             </div>
 
@@ -385,10 +473,10 @@ export default function Home() {
               <ul className="space-y-2 text-sm">
                 <li>
                   <a
-                    href="#overview"
+                    href="#research"
                     className="text-foreground/60 hover:text-primary transition-colors"
                   >
-                    Overview
+                    Research
                   </a>
                 </li>
                 <li>
@@ -449,7 +537,7 @@ export default function Home() {
               </ul>
             </div>
 
-            {/* Contact */}
+            {/* Connect */}
             <div>
               <h4 className="font-semibold text-foreground mb-4">Connect</h4>
               <ul className="space-y-2 text-sm">
