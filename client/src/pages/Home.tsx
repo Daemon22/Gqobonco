@@ -52,7 +52,7 @@ export default function Home() {
         <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
-              src="https://d2xsxph8kpxj0f.cloudfront.net/310519663715450243/8VKFBkAqk4iGJN5Ussq6F5/gqobonco-logo-bfdqwYuXekzzYgDy672HYy.webp"
+              src="/assets/gqobonco-logo.webp"
               alt="Gqobonco Logo"
               className="h-12 w-12 object-contain"
             />
@@ -90,7 +90,7 @@ export default function Home() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img
-            src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663715450243/JZDsPlLDPYrjBxHh.png"
+            src="/assets/river-of-lineage.png"
             alt="River of Lineage"
             className="w-full h-full object-cover"
           />
@@ -210,7 +210,7 @@ export default function Home() {
             </h2>
             <div className="rounded-lg overflow-hidden shadow-xl mb-8">
               <img
-                src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663715450243/wlMsdsBTEfsQZjYR.png"
+                src="/assets/data-flow-visual.png"
                 alt="Data Flow Visual"
                 className="w-full h-auto object-cover"
               />
@@ -456,7 +456,7 @@ export default function Home() {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <img
-                  src="https://d2xsxph8kpxj0f.cloudfront.net/310519663715450243/8VKFBkAqk4iGJN5Ussq6F5/gqobonco-logo-bfdqwYuXekzzYgDy672HYy.webp"
+                  src="/assets/gqobonco-logo.webp"
                   alt="Gqobonco"
                   className="h-8 w-8 object-contain"
                 />
