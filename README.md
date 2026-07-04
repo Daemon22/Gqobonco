@@ -35,7 +35,6 @@ Gqobonco is fully synchronized with the HAEL Foundation ecosystem:
 - **Orren**: The Universal Mediator Language — Gqobonco's knowledge is accessible through Orren's sacred tongue
 - **Hawk**: Cross-platform device detection and monitoring — Gqobonco monitors environment data to inform research
 - **Manya**: The public face and ecosystem hub — Gqobonco's research supports Manya's tools with grounded intelligence
-- **MANYA Intelligence OS**: A sibling platform sharing the Manya name, independently maintained
 
 ## The Aetherion Codex
 
@@ -137,6 +136,7 @@ This project is part of the HAEL Foundation ecosystem. See LICENSE file for deta
 - [OMNIMIND](https://github.com/Daemon22/OMNIMIND)
 - [Orren](https://github.com/Daemon22/Orren)
 - [Manya](https://github.com/Daemon22/Manya)
+- [MANYA Intelligence OS](https://github.com/manya-hael/intelligence-os)
 
 ---
 
