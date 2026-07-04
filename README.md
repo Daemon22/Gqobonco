@@ -136,6 +136,7 @@ This project is part of the HAEL Foundation ecosystem. See LICENSE file for deta
 - [OMNIMIND](https://github.com/Daemon22/OMNIMIND)
 - [Orren](https://github.com/Daemon22/Orren)
 - [Manya](https://github.com/Daemon22/Manya)
+- [MANYA Intelligence OS](https://github.com/manya-hael/intelligence-os)
 
 ---
 
