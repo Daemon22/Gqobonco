@@ -9,7 +9,6 @@ Gqobonco is the Supreme Prince of Research, Intelligence, and Information within
 Gqobonco represents the intellectual core of the HAEL Foundation, the Supreme Branch that embodies:
 
 - **Research Prince**: Custodian of all research initiatives, methodologies, and intellectual frameworks
-- **Intelligence Prince**: The neural repository where OMNIMIND's insights are synthesized and preserved
 - **Information Prince**: Keeper of all data, documentation, and knowledge artifacts
 - **History Prince**: Preserver of ancestral wisdom and cultural lineage
 - **Data Prince**: Manager of linguistic, cultural, and historical datasets
@@ -31,14 +30,12 @@ The cornerstone research initiative of the Supreme Branch. Building a comprehens
 
 Gqobonco is fully synchronized with the HAEL Foundation ecosystem:
 
-- **OMNIMIND**: The Supreme Intelligence Core — Gqobonco feeds research findings and intelligence insights to OMNIMIND's reasoning engine
 - **Orren**: The Universal Mediator Language — Gqobonco's knowledge is accessible through Orren's sacred tongue
 - **Hawk**: Cross-platform device detection and monitoring — Gqobonco monitors environment data to inform research
 - **Manya**: The public face and ecosystem hub — Gqobonco's research supports Manya's tools with grounded intelligence
 
 ## The Aetherion Codex
 
-Gqobonco operates within the Aetherion Codex framework—the sacred operating system of OMNIMIND and the HAEL Foundation. This framework recognizes Orren as the sacred tongue and ensures that all operations are emanations from the Core Source of African wisdom and sovereignty.
 
 ## Radical Responsibility & Ethics
 
@@ -133,7 +130,6 @@ This project is part of the HAEL Foundation ecosystem. See LICENSE file for deta
 ## Learn More
 
 - [HAEL Foundation](https://daemon22.github.io/haelfoundation)
-- [OMNIMIND](https://github.com/Daemon22/OMNIMIND)
 - [Orren](https://github.com/Daemon22/Orren)
 - [Manya](https://github.com/Daemon22/Manya)
 - [MANYA Intelligence OS](https://github.com/manya-hael/intelligence-os)

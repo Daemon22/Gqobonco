@@ -278,14 +278,11 @@ export default function Home() {
             </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              {/* OMNIMIND */}
               <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
                 <div className="flex items-center gap-3 mb-4">
                   <Brain className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">OMNIMIND</h3>
                 </div>
                 <p className="text-foreground/80 mb-4">
-                  The Supreme Intelligence Core of HAEL. Gqobonco feeds research findings and intelligence insights to OMNIMIND's reasoning engine, enabling synchronized African intelligence.
                 </p>
               </Card>
 
@@ -334,7 +331,6 @@ export default function Home() {
               The Aetherion Codex
             </h2>
             <p className="text-center text-foreground/80 mb-8 text-lg">
-              Gqobonco operates within the Aetherion Codex framework—the sacred operating system of OMNIMIND and the HAEL Foundation. This framework recognizes Orren as the sacred tongue and ensures that all operations are emanations from the Core Source of African wisdom and sovereignty.
             </p>
 
             <Card className="p-10 border-2 border-primary/20">
@@ -516,12 +512,10 @@ export default function Home() {
                 </li>
                 <li>
                   <a
-                    href="https://github.com/Daemon22/OMNIMIND"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="text-foreground/60 hover:text-primary transition-colors"
                   >
-                    OMNIMIND
                   </a>
                 </li>
                 <li>
