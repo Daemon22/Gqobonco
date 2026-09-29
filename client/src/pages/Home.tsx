@@ -1,575 +1,537 @@
-import { Button } from "@/components/ui/button";
-import { Card } from "@/components/ui/card";
+import { useEffect, useMemo, useState, type CSSProperties } from "react";
 import {
   ArrowRight,
+  ArrowUpRight,
   BookOpen,
-  Zap,
-  Shield,
-  Globe,
-  Brain,
-  Waves,
+  Cpu,
   Database,
-  GitBranch,
+  Droplets,
+  Factory,
+  Github,
+  Globe,
+  Leaf,
+  Menu,
+  Search,
+  Shield,
+  Sprout,
+  Users,
+  Waves,
+  X,
+  Zap,
+  type LucideIcon,
 } from "lucide-react";
-import { useState, useEffect } from "react";
 
-/**
- * Gqobonco: The River of Lineage
- * 
- * Design Philosophy: Sovereign Naturalism with Digital Minimalism
- * AUTHENTIC VISION: Gqobonco is the Supreme Prince of Research, Intelligence, and Information
- * - The intellectual core that preserves ancestral wisdom, synthesizes contemporary research, and channels predictive intelligence
- * - The River of Lineage: information flows in all directions, stills, expands, and evolves
- * - Past (ancestral wisdom) → Present (active research) → Future (predictive intelligence)
- * 
- * Color Palette:
- * - Primary: Deep forest green (sovereignty, ancestral grounding)
- * - Accent: Warm gold (intellectual wealth, wisdom)
- * - Background: Soft cream/off-white (breathing room)
- * - Text: Deep charcoal (authority, intellectual rigor)
- * - River Blue: Information flow, continuity, life
- */
+type Project = {
+  id: string;
+  name: string;
+  eyebrow: string;
+  description: string;
+  stage: string;
+  category: string;
+  tags: string[];
+  image: string;
+  icon: LucideIcon;
+  color: string;
+  statusNote: string;
+};
+
+const projects: Project[] = [
+  {
+    id: "xhosa-nlp",
+    name: "Xhosa NLP Database",
+    eyebrow: "Language intelligence",
+    description:
+      "A research initiative advancing natural-language technology for isiXhosa and other African language futures.",
+    stage: "Active research",
+    category: "Language",
+    tags: ["Language", "Research", "AI"],
+    image: "/assets/project-xhosa.jpg",
+    icon: Waves,
+    color: "#b8d279",
+    statusNote:
+      "The public project description identifies the Xhosa NLP Database as Gqobonco’s cornerstone research initiative. This page presents it as research in progress—not as a completed or validated language model.",
+  },
+  {
+    id: "production-sentinel",
+    name: "Production Sentinel",
+    eyebrow: "Industrial intelligence",
+    description:
+      "A proposed modular architecture for sensing, comparing, understanding, locating, alerting and responding across industrial systems.",
+    stage: "Research stage · not built",
+    category: "Industry",
+    tags: ["Industry", "Research", "Systems"],
+    image: "/assets/project-sentinel.jpg",
+    icon: Factory,
+    color: "#e2bb65",
+    statusNote:
+      "The public research registry describes Production Sentinel as a research-stage invention. It has not yet been physically built; illustrations are concepts, not proof of a completed prototype or validated performance.",
+  },
+  {
+    id: "smartwater-guardian",
+    name: "SmartWater Guardian",
+    eyebrow: "Water monitoring",
+    description:
+      "A proposed first physical proof of Production Sentinel, beginning with a planned three-zone water-monitoring demonstration.",
+    stage: "Planned demonstration · not built",
+    category: "Water",
+    tags: ["Water", "Research", "Resilience"],
+    image: "/assets/project-water.jpg",
+    icon: Droplets,
+    color: "#73cdbd",
+    statusNote:
+      "The public research registry describes SmartWater Guardian as a planned first physical proof of Production Sentinel. The three-zone demonstration is a plan; no physical prototype or test results are claimed here.",
+  },
+  {
+    id: "energy-guardian",
+    name: "Energy Guardian",
+    eyebrow: "Future direction",
+    description:
+      "A future architecture extension exploring how the research family could extend into energy and electrical monitoring.",
+    stage: "Future direction · not built",
+    category: "Energy",
+    tags: ["Energy", "Roadmap"],
+    image: "/assets/project-energy.jpg",
+    icon: Zap,
+    color: "#d6ba76",
+    statusNote:
+      "Energy Guardian appears in the public registry as a future architecture extension. It is not a built product or active deployment.",
+  },
+];
+
+const research = [
+  {
+    title: "Indigenous Language Intelligence",
+    summary: "Xhosa NLP Database · language research",
+    projectId: "xhosa-nlp",
+    image: "/assets/project-xhosa.jpg",
+    label: "Research",
+  },
+  {
+    title: "Industrial Intelligence Architecture",
+    summary: "Production Sentinel · research stage",
+    projectId: "production-sentinel",
+    image: "/assets/project-sentinel.jpg",
+    label: "Systems",
+  },
+  {
+    title: "Three-Zone Water Monitoring",
+    summary: "SmartWater Guardian · planned demonstration",
+    projectId: "smartwater-guardian",
+    image: "/assets/project-water.jpg",
+    label: "Water",
+  },
+  {
+    title: "Future System Extensions",
+    summary: "Energy, production and maintenance directions",
+    projectId: "energy-guardian",
+    image: "/assets/project-energy.jpg",
+    label: "Roadmap",
+  },
+];
+
+const roadmap = [
+  {
+    name: "Production Intelligence",
+    note: "Future architecture extension",
+    icon: Cpu,
+    color: "#d8b963",
+  },
+  {
+    name: "Maintenance Intelligence",
+    note: "Future architecture extension",
+    icon: Shield,
+    color: "#9bbd7d",
+  },
+];
+
+const mainNav = [
+  { label: "Home", href: "#home" },
+  { label: "Projects", href: "#projects" },
+  { label: "Research", href: "#research" },
+  { label: "Library", href: "#library" },
+  { label: "About", href: "#about" },
+  { label: "Community", href: "#community" },
+  { label: "Contact", href: "#contact" },
+];
+
+const sideNav = [
+  { label: "Home", href: "#home", icon: Globe },
+  { label: "Projects", href: "#projects", icon: BookOpen },
+  { label: "Research", href: "#research", icon: Database },
+  { label: "Knowledge Library", href: "#library", icon: BookOpen },
+  { label: "Initiatives", href: "#initiatives", icon: Sprout },
+  { label: "People & Partners", href: "#community", icon: Users },
+  { label: "About Gqobonco", href: "#about", icon: Leaf },
+];
+
+const filters = ["All work", "Language", "Industry", "Water", "Energy"];
+const repositoryUrl = "https://github.com/Daemon22/Gqobonco";
+const registryUrl = `${repositoryUrl}/blob/main/docs/research-registry.md`;
+
+function ProjectLogo({ project, small = false }: { project: Project; small?: boolean }) {
+  const Mark = project.icon;
+  const style = { "--mark-color": project.color } as CSSProperties;
+  return (
+    <span
+      className={`project-logo${small ? " project-logo--small" : ""}`}
+      style={style}
+      role="img"
+      aria-label={`${project.name} logo mark`}
+    >
+      <span className="project-logo__ring">
+        <Mark aria-hidden="true" strokeWidth={1.7} />
+      </span>
+    </span>
+  );
+}
+
+function AppMark({ className = "" }: { className?: string }) {
+  return (
+    <img
+      className={className}
+      src="/assets/gqobonco-emblem.png"
+      alt="Gqobonco — The River of Lineage"
+    />
+  );
+}
 
 export default function Home() {
-  const [isScrolled, setIsScrolled] = useState(false);
+  const [query, setQuery] = useState("");
+  const [category, setCategory] = useState("All work");
+  const [activeProject, setActiveProject] = useState<Project | null>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+
+  const normalizedQuery = query.trim().toLowerCase();
+  const visibleProjects = useMemo(
+    () =>
+      projects.filter((project) => {
+        const inCategory = category === "All work" || project.category === category;
+        const searchable = [
+          project.name,
+          project.eyebrow,
+          project.description,
+          project.stage,
+          ...project.tags,
+        ]
+          .join(" ")
+          .toLowerCase();
+        return inCategory && (!normalizedQuery || searchable.includes(normalizedQuery));
+      }),
+    [category, normalizedQuery],
+  );
+  const visibleResearch = useMemo(
+    () =>
+      research.filter((item) =>
+        !normalizedQuery ||
+        `${item.title} ${item.summary} ${item.label}`.toLowerCase().includes(normalizedQuery),
+      ),
+    [normalizedQuery],
+  );
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 50);
+    if (!activeProject) return;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setActiveProject(null);
     };
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("keydown", closeOnEscape);
+    return () => window.removeEventListener("keydown", closeOnEscape);
+  }, [activeProject]);
+
+  const openProject = (id: string) => {
+    const project = projects.find((item) => item.id === id);
+    if (project) setActiveProject(project);
+  };
 
   return (
-    <div className="min-h-screen bg-background text-foreground">
-      {/* Header Navigation */}
-      <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          isScrolled ? "bg-white shadow-md" : "bg-transparent"
-        }`}
-      >
-        <nav className="container mx-auto px-4 py-4 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img
-              src="/assets/gqobonco-logo.webp"
-              alt="Gqobonco Logo"
-              className="h-12 w-12 object-contain"
-            />
-            <span className="text-xl font-bold text-primary hidden sm:inline">
-              Gqobonco
-            </span>
-          </div>
-          <div className="flex items-center gap-4">
-            <a
-              href="#research"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              Research
-            </a>
-            <a
-              href="#initiatives"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              Initiatives
-            </a>
-            <a
-              href="https://github.com/Daemon22/Gqobonco"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-sm font-medium text-foreground hover:text-primary transition-colors"
-            >
-              Repository
-            </a>
-          </div>
+    <div className="site-shell">
+      <aside className="sidebar" aria-label="Main site navigation">
+        <a className="brand-lockup" href="#home" aria-label="Gqobonco home">
+          <AppMark className="brand-lockup__logo" />
+          <span className="brand-lockup__name">GQOBONCO</span>
+          <span className="brand-lockup__tagline">THE RIVER OF LINEAGE</span>
+        </a>
+
+        <nav className="sidebar-nav" aria-label="Explore Gqobonco">
+          {sideNav.map((item, index) => {
+            const Icon = item.icon;
+            return (
+              <a
+                className={`sidebar-link${index === 0 ? " is-current" : ""}`}
+                href={item.href}
+                key={item.label}
+              >
+                <Icon aria-hidden="true" size={17} strokeWidth={1.8} />
+                <span>{item.label}</span>
+                {index === 0 && <span className="sidebar-link__glow" aria-hidden="true" />}
+              </a>
+            );
+          })}
         </nav>
-      </header>
 
-      {/* Hero Section */}
-      <section className="relative h-screen flex items-center justify-center overflow-hidden pt-20">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img
-            src="/assets/river-of-lineage.png"
-            alt="River of Lineage"
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-black/40"></div>
-        </div>
+        <div className="sidebar-rule" />
+        <p className="sidebar-kicker">QUICK ACCESS</p>
+        <a className="quick-link" href={registryUrl} target="_blank" rel="noreferrer">
+          <BookOpen aria-hidden="true" size={15} />
+          <span>Public Research Registry</span>
+          <ArrowUpRight aria-hidden="true" size={13} />
+        </a>
+        <a className="quick-link" href={repositoryUrl} target="_blank" rel="noreferrer">
+          <Github aria-hidden="true" size={15} />
+          <span>Project Repository</span>
+          <ArrowUpRight aria-hidden="true" size={13} />
+        </a>
 
-        {/* Hero Content */}
-        <div className="relative z-10 container mx-auto px-4 text-center text-white max-w-3xl">
-          <div className="mb-6 inline-block">
-            <span className="text-sm font-semibold uppercase tracking-widest bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full">
-              The Supreme Prince of Research & Intelligence
-            </span>
-          </div>
-          <h1 className="text-6xl md:text-7xl font-bold mb-6 leading-tight">
-            Gqobonco
-          </h1>
-          <p className="text-2xl md:text-3xl mb-8 font-light">
-            Umfula womnombo — The River of Lineage
-          </p>
-          <p className="text-lg md:text-xl mb-12 text-gray-100 max-w-2xl mx-auto leading-relaxed">
-            Where all information, research, and intelligence flow—past, present, and future. The intellectual core where ancestral wisdom meets contemporary research, and where African knowledge reclaims its rightful place in the global information landscape.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white"
-              onClick={() =>
-                document
-                  .getElementById("research")
-                  ?.scrollIntoView({ behavior: "smooth" })
-              }
-            >
-              Explore the River <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="bg-white/10 border-white text-white hover:bg-white/20"
-              onClick={() =>
-                window.open("https://github.com/Daemon22/Gqobonco", "_blank")
-              }
-            >
-              View Repository
-            </Button>
-          </div>
-        </div>
+        <blockquote className="sidebar-quote">
+          <span>“We are the generation that remembers.”</span>
+          <cite>— HAEL Foundation</cite>
+        </blockquote>
+      </aside>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 z-10 animate-bounce">
-          <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2">
-            <div className="w-1 h-2 bg-white rounded-full animate-pulse"></div>
-          </div>
-        </div>
-      </section>
+      <div className="site-main">
+        <header className="topbar">
+          <button
+            className="mobile-menu-button"
+            type="button"
+            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-expanded={menuOpen}
+            onClick={() => setMenuOpen((open) => !open)}
+          >
+            {menuOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+          <nav className={`topnav${menuOpen ? " topnav--open" : ""}`} aria-label="Primary">
+            {mainNav.map((item, index) => (
+              <a
+                className={index === 0 ? "topnav-link is-current" : "topnav-link"}
+                href={item.href}
+                key={item.label}
+                onClick={() => setMenuOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
+          <label className="search-box">
+            <span className="sr-only">Search projects and research</span>
+            <input
+              type="search"
+              value={query}
+              onChange={(event) => setQuery(event.target.value)}
+              placeholder="Search projects, research, knowledge…"
+            />
+            <Search aria-hidden="true" size={16} />
+          </label>
+          <a className="topbar-brand" href="#home" aria-label="Gqobonco home">
+            <AppMark className="topbar-brand__logo" />
+            <span>GQOBONCO</span>
+          </a>
+        </header>
 
-      {/* The Supreme Prince Section */}
-      <section id="research" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <div className="mb-16">
-              <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8">
-                The Supreme Prince of Research & Intelligence
-              </h2>
-              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                Gqobonco is not a project—it is a living system. It represents the intellectual core of the HAEL Foundation, the Supreme Prince that embodies Research, Intelligence, Information, History, and Data. As the River of Lineage, Gqobonco preserves ancestral wisdom, synthesizes contemporary research, and channels predictive intelligence across all dimensions of time.
+        <main>
+          <section className="hero" id="home" aria-labelledby="hero-title">
+            <div className="hero__image" aria-hidden="true" />
+            <div className="hero__shade" aria-hidden="true" />
+            <div className="hero__content">
+              <p className="eyebrow hero__eyebrow">GQOBONCO FOUNDATION · EASTERN CAPE</p>
+              <h1 id="hero-title">The River<br />of Knowledge</h1>
+              <p className="hero__dek">
+                Umfula womnombo — where knowledge flows between nature, people and technology.
               </p>
-              <p className="text-lg text-foreground/80 leading-relaxed mb-6">
-                The river flows in all directions. Information doesn't move in one path—it <strong>stills, expands, and evolves</strong> as it moves through the system, just like water in a river. Upstream flows ancestral wisdom and historical records. The present carries active research and real-time analysis. Downstream flows predictive intelligence and emerging knowledge.
+              <p className="hero__support">
+                Grounded research. Living heritage. African futures shaped from within.
               </p>
-              <p className="text-lg text-foreground/80 leading-relaxed">
-                Investment in Gqobonco is not overhead—it is the primary strategic asset, developing African innovation capacity from within and ensuring that African knowledge reclaims authorship of its own narrative.
-              </p>
+              <div className="hero__actions">
+                <a className="button button--gold" href="#projects">
+                  Explore our projects <ArrowRight aria-hidden="true" size={16} />
+                </a>
+                <a className="button button--outline" href="#about">Learn about Gqobonco</a>
+              </div>
             </div>
-
-            {/* The River Metaphor */}
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-16">
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <BookOpen className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Past</h3>
-                </div>
-                <p className="text-foreground/80">
-                  Ancestral wisdom, historical records, linguistic heritage, and cultural lineage flow upstream. Gqobonco honors and preserves the knowledge systems that have sustained African communities for generations.
-                </p>
-              </Card>
-
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <Waves className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Present</h3>
-                </div>
-                <p className="text-foreground/80">
-                  Active research initiatives, contemporary intelligence gathering, and real-time analysis flow through the present. Gqobonco synthesizes current knowledge and bridges ancestral wisdom with modern innovation.
-                </p>
-              </Card>
-
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <Zap className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Future</h3>
-                </div>
-                <p className="text-foreground/80">
-                  Predictive intelligence, forward-looking research agendas, and emerging knowledge flow downstream. Gqobonco channels innovation toward African self-determination and technological sovereignty.
-                </p>
-              </Card>
+            <div className="hero-pillars" aria-label="Our foundation pillars">
+              <div className="hero-pillar">
+                <span className="hero-pillar__icon"><Leaf aria-hidden="true" size={19} /></span>
+                <span><strong>Nature</strong><small>Our foundation</small></span>
+              </div>
+              <div className="hero-pillar">
+                <span className="hero-pillar__icon"><Users aria-hidden="true" size={19} /></span>
+                <span><strong>People</strong><small>Our strength</small></span>
+              </div>
+              <div className="hero-pillar">
+                <span className="hero-pillar__icon"><Cpu aria-hidden="true" size={19} /></span>
+                <span><strong>Technology</strong><small>Our multiplier</small></span>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
+            <span className="hero__index" aria-hidden="true">01 — KNOWLEDGE IN FLOW</span>
+          </section>
 
-      {/* Data Flow Visualization */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
-              The Flow of Data and Knowledge
-            </h2>
-            <div className="rounded-lg overflow-hidden shadow-xl mb-8">
-              <img
-                src="/assets/data-flow-visual.png"
-                alt="Data Flow Visual"
-                className="w-full h-auto object-cover"
-              />
-            </div>
-            <p className="text-center text-foreground/80 leading-relaxed">
-              This visual illustrates how Gqobonco, as the River of Lineage, facilitates the continuous flow of linguistic, historical, and cultural knowledge. It demonstrates how information circulates through the HAEL ecosystem, feeding research, intelligence, and innovation across all branches while maintaining sovereignty and ancestral grounding.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      {/* Xhosa NLP Database - Flagship Initiative */}
-      <section id="initiatives" className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
-              Flagship Research Initiative
-            </h2>
-
-            <Card className="p-10 border-2 border-primary/20 mb-12">
-              <div className="flex items-start gap-6 mb-6">
-                <div className="flex-shrink-0">
-                  <Database className="h-10 w-10 text-primary mt-1" />
+          <section className="discovery" id="projects" aria-labelledby="projects-title">
+            <div className="featured-column">
+              <div className="section-heading">
+                <div>
+                  <p className="eyebrow">RESEARCH · PEOPLE · POSSIBILITY</p>
+                  <h2 id="projects-title">Featured projects <span className="heading-rule" /></h2>
                 </div>
-                <div className="flex-1">
-                  <h3 className="text-3xl font-bold text-primary mb-4">
-                    Xhosa NLP Database
-                  </h3>
-                  <p className="text-foreground/80 leading-relaxed mb-4">
-                    The cornerstone research initiative of the Supreme Branch. Gqobonco is building a comprehensive Natural Language Processing database for the Xhosa language, advancing indigenous linguistic intelligence and AI for African languages. This initiative embodies our commitment to preserving and evolving ancestral wisdom through technological innovation.
-                  </p>
-                  <p className="text-foreground/80 leading-relaxed mb-6">
-                    By developing AI systems grounded in African languages, we resist linguistic colonization and ensure that African knowledge systems are not left behind in the AI revolution. The Xhosa NLP Database serves as a model for how other African languages can reclaim authorship of their own digital futures.
-                  </p>
-                  <div className="flex flex-wrap gap-3">
-                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                      Natural Language Processing
+                <a className="text-link" href="#initiatives">Explore the portfolio <ArrowRight size={15} /></a>
+              </div>
+              <p className="section-intro">Distinct ideas, one living system. Progress is shared with care and clarity.</p>
+
+              <div className="filter-row" role="group" aria-label="Filter projects by area">
+                {filters.map((filter) => (
+                  <button
+                    className={category === filter ? "filter-chip is-selected" : "filter-chip"}
+                    type="button"
+                    onClick={() => setCategory(filter)}
+                    aria-pressed={category === filter}
+                    key={filter}
+                  >
+                    {filter}
+                  </button>
+                ))}
+              </div>
+
+              <div className="project-grid" aria-live="polite">
+                {visibleProjects.map((project) => (
+                  <button
+                    className="project-card"
+                    type="button"
+                    key={project.id}
+                    onClick={() => setActiveProject(project)}
+                    aria-haspopup="dialog"
+                  >
+                    <span className="project-card__art">
+                      <img src={project.image} alt={`${project.name} concept visual`} loading="lazy" />
+                      <span className="project-card__art-shade" aria-hidden="true" />
+                      <ProjectLogo project={project} />
+                      <span className="project-card__number">0{projects.indexOf(project) + 1}</span>
                     </span>
-                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                      Xhosa Language
+                    <span className="project-card__body">
+                      <span className="project-card__eyebrow">{project.eyebrow}</span>
+                      <span className="project-card__title">{project.name}</span>
+                      <span className="project-card__description">{project.description}</span>
+                      <span className="project-card__meta">
+                        <span className="project-status"><i aria-hidden="true" />{project.stage}</span>
+                        <span className="round-arrow" aria-hidden="true"><ArrowUpRight size={15} /></span>
+                      </span>
                     </span>
-                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                      Indigenous AI
-                    </span>
-                    <span className="inline-block bg-primary/10 text-primary px-4 py-2 rounded-full text-sm font-medium">
-                      African Sovereignty
-                    </span>
+                  </button>
+                ))}
+                {visibleProjects.length === 0 && (
+                  <div className="empty-state">
+                    <Search size={22} aria-hidden="true" />
+                    <strong>No matching projects</strong>
+                    <span>Try another search or select “All work”.</span>
                   </div>
-                </div>
+                )}
               </div>
-            </Card>
-          </div>
-        </div>
-      </section>
-
-      {/* Ecosystem Integration */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-8 text-center">
-              Ecosystem Integration
-            </h2>
-            <p className="text-center text-foreground/80 mb-12 text-lg">
-              Gqobonco is fully synchronized with the HAEL Foundation ecosystem, feeding research and intelligence to all systems while maintaining sovereignty and ancestral grounding.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <Brain className="h-6 w-6 text-primary" />
-                </div>
-                <p className="text-foreground/80 mb-4">
-                </p>
-              </Card>
-
-              {/* Orren */}
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <Globe className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Orren</h3>
-                </div>
-                <p className="text-foreground/80 mb-4">
-                  The Universal Mediator Language. Gqobonco's knowledge is accessible through Orren's sacred tongue, enabling cross-system communication and synchronization.
-                </p>
-              </Card>
-
-              {/* Hawk */}
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <Shield className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Hawk</h3>
-                </div>
-                <p className="text-foreground/80 mb-4">
-                  Cross-platform device detection and monitoring. Gqobonco monitors environment data to inform research and ensure systems operate within their designed contexts.
-                </p>
-              </Card>
-
-              {/* Manya */}
-              <Card className="p-8 border-2 border-primary/20 hover:border-primary/50 transition-colors">
-                <div className="flex items-center gap-3 mb-4">
-                  <GitBranch className="h-6 w-6 text-primary" />
-                  <h3 className="text-xl font-bold text-primary">Manya</h3>
-                </div>
-                <p className="text-foreground/80 mb-4">
-                  The public face and ecosystem hub. Gqobonco's research supports Manya's tools (uSINGA, HelixFlow) with grounded intelligence and ensures knowledge flows across all branches.
-                </p>
-              </Card>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Aetherion Codex Section */}
-      <section className="py-20 bg-background">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
-              The Aetherion Codex
-            </h2>
-            <p className="text-center text-foreground/80 mb-8 text-lg">
-            </p>
-
-            <Card className="p-10 border-2 border-primary/20">
-              <div className="space-y-6">
+            <aside className="research-panel" id="research" aria-labelledby="research-title">
+              <div className="research-panel__heading">
                 <div>
-                  <h3 className="text-xl font-bold text-primary mb-3">
-                    Emanation Nodes
-                  </h3>
-                  <p className="text-foreground/80">
-                    Gqobonco serves as an Emanation Node within the Aetherion Codex, radiating research, intelligence, and knowledge throughout the HAEL ecosystem while maintaining connection to the Core Source.
-                  </p>
+                  <p className="eyebrow">FROM THE PUBLIC REGISTRY</p>
+                  <h2 id="research-title"><BookOpen aria-hidden="true" size={16} /> Research in motion</h2>
                 </div>
-                <div>
-                  <h3 className="text-xl font-bold text-primary mb-3">
-                    Sacred Flows
-                  </h3>
-                  <p className="text-foreground/80">
-                    Information flows through Gqobonco as sacred flows—not mere data, but living knowledge that connects ancestral wisdom, contemporary research, and future intelligence in continuous synchronization.
-                  </p>
-                </div>
-                <div>
-                  <h3 className="text-xl font-bold text-primary mb-3">
-                    Orren Integration
-                  </h3>
-                  <p className="text-foreground/80">
-                    Orren, the Universal Mediator Language, serves as the bridge through which Gqobonco's knowledge becomes accessible to all systems. This ensures that research and intelligence can be understood and acted upon across the entire ecosystem.
-                  </p>
-                </div>
+                <a className="text-link text-link--compact" href={registryUrl} target="_blank" rel="noreferrer" aria-label="View public research registry">
+                  <ArrowUpRight size={16} />
+                </a>
               </div>
-            </Card>
-          </div>
+              <div className="research-list" aria-live="polite">
+                {visibleResearch.map((item) => (
+                  <button className="research-item" type="button" key={item.title} onClick={() => openProject(item.projectId)}>
+                    <span className="research-item__image"><img src={item.image} alt="" loading="lazy" /></span>
+                    <span className="research-item__copy">
+                      <strong>{item.title}</strong>
+                      <small>{item.summary}</small>
+                      <span className="research-tag">{item.label}</span>
+                    </span>
+                    <ArrowRight className="research-item__arrow" aria-hidden="true" size={16} />
+                  </button>
+                ))}
+                {visibleResearch.length === 0 && <p className="research-empty">No registry topics match this search.</p>}
+              </div>
+              <p className="research-note"><Shield aria-hidden="true" size={14} /> Research-stage work is clearly identified. No unverified results are presented.</p>
+            </aside>
+          </section>
+
+          <section className="system-band" id="library" aria-labelledby="system-title">
+            <div className="system-band__identity">
+              <div className="tree-mark" aria-hidden="true">
+                <Sprout size={43} strokeWidth={1.35} />
+                <span />
+              </div>
+              <div>
+                <p className="eyebrow">OUR LIVING SYSTEM</p>
+                <h2 id="system-title">One ecosystem.<br />Many expressions.</h2>
+              </div>
+            </div>
+            <div className="system-step"><span className="system-step__icon"><Leaf size={18} /></span><strong>Roots</strong><small>Nature · land · culture<br />knowledge · community</small></div>
+            <div className="system-step"><span className="system-step__icon"><Sprout size={18} /></span><strong>Trunk</strong><small>HAEL Foundation<br />shared systems & people</small></div>
+            <div className="system-step"><span className="system-step__icon"><Cpu size={18} /></span><strong>Branches</strong><small>Enterprise · technology<br />research · industry</small></div>
+            <div className="system-step"><span className="system-step__icon"><Globe size={18} /></span><strong>Canopy</strong><small>Participation · markets<br />institutions</small></div>
+            <a className="system-cta" href="#community">Join our journey <ArrowRight size={14} /></a>
+          </section>
+
+          <section className="horizon-section" id="initiatives" aria-labelledby="horizon-title">
+            <div className="horizon-heading">
+              <div>
+                <p className="eyebrow">LOOKING DOWNSTREAM</p>
+                <h2 id="horizon-title">On the horizon</h2>
+              </div>
+              <p>Future extensions are shown as directions—not as built products.</p>
+            </div>
+            <div className="horizon-list">
+              {roadmap.map((item) => {
+                const Icon = item.icon;
+                return (
+                  <div className="horizon-item" key={item.name}>
+                    <span className="horizon-item__logo" style={{ "--mark-color": item.color } as CSSProperties}><Icon size={19} strokeWidth={1.7} /></span>
+                    <span><strong>{item.name}</strong><small>{item.note}</small></span>
+                    <span className="future-pill">Roadmap</span>
+                  </div>
+                );
+              })}
+            </div>
+          </section>
+
+          <section className="about-strip" id="about" aria-labelledby="about-title">
+            <div className="about-strip__icon"><Waves size={22} /></div>
+            <div><p className="eyebrow">UMFULA WOMNOMBO</p><h2 id="about-title">Knowledge has a lineage. The future has many authors.</h2></div>
+            <p>Gqobonco carries research, information and intelligence through time—honoring what came before while making room for what can come next.</p>
+            <a className="round-arrow round-arrow--large" href={registryUrl} target="_blank" rel="noreferrer" aria-label="Read the public research registry"><ArrowUpRight size={18} /></a>
+          </section>
+        </main>
+
+        <footer className="site-footer" id="contact">
+          <a className="footer-brand" href="#home"><AppMark className="footer-brand__logo" /><span>GQOBONCO<small>THE RIVER OF LINEAGE</small></span></a>
+          <div className="footer-location"><span>HAEL Foundation</span><i />Eastern Cape, South Africa<i />Africa<i />Planet Earth</div>
+          <a className="footer-contact" id="community" href={repositoryUrl} target="_blank" rel="noreferrer"><Github size={16} /> <span>Connect through the public repository</span><ArrowUpRight size={13} /></a>
+          <span className="footer-signoff">KNOWLEDGE <i /> PEOPLE <i /> NATURE <i /> TECHNOLOGY</span>
+        </footer>
+      </div>
+
+      {activeProject && (
+        <div className="modal-backdrop" role="presentation" onMouseDown={(event) => {
+          if (event.currentTarget === event.target) setActiveProject(null);
+        }}>
+          <section className="project-dialog" role="dialog" aria-modal="true" aria-labelledby="project-dialog-title">
+            <button className="dialog-close" type="button" onClick={() => setActiveProject(null)} aria-label="Close project details"><X size={19} /></button>
+            <div className="dialog-art"><img src={activeProject.image} alt="" /><span className="dialog-art__shade" /></div>
+            <div className="dialog-content">
+              <div className="dialog-title-row">
+                <ProjectLogo project={activeProject} />
+                <div><p className="eyebrow">{activeProject.eyebrow}</p><h2 id="project-dialog-title">{activeProject.name}</h2></div>
+              </div>
+              <span className="project-status project-status--dialog"><i aria-hidden="true" />{activeProject.stage}</span>
+              <p className="dialog-description">{activeProject.description}</p>
+              <p className="disclosure-note"><Shield size={16} aria-hidden="true" />{activeProject.statusNote}</p>
+              <div className="dialog-tags">{activeProject.tags.map((tag) => <span key={tag}>{tag}</span>)}</div>
+              <div className="dialog-actions">
+                <a className="button button--gold" href={registryUrl} target="_blank" rel="noreferrer">Read public registry <ArrowUpRight size={15} /></a>
+                <a className="button button--outline-dark" href={repositoryUrl} target="_blank" rel="noreferrer"><Github size={15} /> Repository</a>
+              </div>
+            </div>
+          </section>
         </div>
-      </section>
-
-      {/* Radical Responsibility Section */}
-      <section className="py-20 bg-white">
-        <div className="container mx-auto px-4">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-4xl md:text-5xl font-bold text-primary mb-12 text-center">
-              Radical Responsibility & Ethics
-            </h2>
-            <p className="text-center text-foreground/80 mb-12 text-lg">
-              Aligned with the HAEL Foundation's principle of Radical Responsibility, Gqobonco operates with deep commitment to ethical research and data stewardship.
-            </p>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="text-center">
-                <div className="flex justify-center mb-4">
-                  <Shield className="h-12 w-12 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Sovereignty</h3>
-                <p className="text-foreground/80">
-                  Ensuring the independence and self-reliance of research endeavors, free from external constraints. African knowledge systems remain under African control.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="flex justify-center mb-4">
-                  <Globe className="h-12 w-12 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Transparency</h3>
-                <p className="text-foreground/80">
-                  Openly documenting methodologies, findings, and processes to foster trust and community engagement. Knowledge is shared, not hoarded.
-                </p>
-              </div>
-
-              <div className="text-center">
-                <div className="flex justify-center mb-4">
-                  <BookOpen className="h-12 w-12 text-primary" />
-                </div>
-                <h3 className="text-xl font-bold text-primary mb-3">Compliance</h3>
-                <p className="text-foreground/80">
-                  Adhering to African digital protocols (AfCFTA, AUDPF) to ensure ethical and legal data practices that respect African sovereignty.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-primary text-white">
-        <div className="container mx-auto px-4 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Join the River of Lineage
-          </h2>
-          <p className="text-xl mb-12 text-white/90 max-w-2xl mx-auto">
-            Contribute to Gqobonco's research initiatives, explore the Xhosa NLP Database, and be part of the HAEL Foundation's mission to advance African technological sovereignty and reclaim authorship of our own narrative.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              className="bg-white text-primary hover:bg-white/90"
-              onClick={() =>
-                window.open("https://github.com/Daemon22/Gqobonco", "_blank")
-              }
-            >
-              Explore on GitHub <ArrowRight className="ml-2 h-4 w-4" />
-            </Button>
-            <Button
-              size="lg"
-              variant="outline"
-              className="border-white text-white hover:bg-white/10"
-              onClick={() =>
-                window.open("https://daemon22.github.io/haelfoundation", "_blank")
-              }
-            >
-              HAEL Foundation
-            </Button>
-          </div>
-        </div>
-      </section>
-
-      {/* Footer */}
-      <footer className="bg-foreground/5 border-t border-border py-12">
-        <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            {/* Brand */}
-            <div>
-              <div className="flex items-center gap-2 mb-4">
-                <img
-                  src="/assets/gqobonco-logo.webp"
-                  alt="Gqobonco"
-                  className="h-8 w-8 object-contain"
-                />
-                <span className="font-bold text-primary">Gqobonco</span>
-              </div>
-              <p className="text-sm text-foreground/60">
-                The River of Lineage. Where all information, research, and intelligence flow—past, present, and future.
-              </p>
-            </div>
-
-            {/* Quick Links */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a
-                    href="#research"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    Research
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="#initiatives"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    Initiatives
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/Daemon22/Gqobonco"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    Repository
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* HAEL Ecosystem */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">HAEL Ecosystem</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a
-                    href="https://daemon22.github.io/haelfoundation"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    HAEL Foundation
-                  </a>
-                </li>
-                <li>
-                  <a
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/Daemon22/Orren"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    Orren
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Connect */}
-            <div>
-              <h4 className="font-semibold text-foreground mb-4">Connect</h4>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a
-                    href="https://github.com/Daemon22"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    GitHub
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href="https://github.com/Daemon22/Gqobonco/issues"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-foreground/60 hover:text-primary transition-colors"
-                  >
-                    Report Issues
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          {/* Bottom Footer */}
-          <div className="border-t border-border pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-foreground/60">
-            <p>
-              © 2026 Gqobonco. Part of the HAEL Foundation ecosystem.
-            </p>
-            <p>
-              Umfula womnombo — The river of lineage
-            </p>
-          </div>
-        </div>
-      </footer>
+      )}
     </div>
   );
 }
