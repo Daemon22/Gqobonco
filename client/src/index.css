@@ -204,6 +204,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .dialog-content { display: flex; flex-direction: column; padding: 30px 27px 24px; }
 .dialog-title-row { display: flex; align-items: center; gap: 13px; }
 .dialog-title-row .project-logo { position: static; flex: none; width: 43px; height: 43px; background: #0a261a; }
+.project-dialog-logo { flex: none; width: 64px; height: 64px; padding: 3px; border: 1px solid rgba(198, 164, 80, .34); border-radius: 12px; background: #fffdf6; object-fit: contain; }
 .dialog-title-row h2 { margin: 3px 0 0; color: #16311f; font-family: Georgia, "Times New Roman", serif; font-size: 23px; font-weight: 500; line-height: 1.05; }
 .dialog-title-row .eyebrow { color: #687a54; font-size: 8px; }
 .project-status--dialog { align-self: flex-start; margin-top: 16px; padding: 6px 9px; border: 1px solid rgba(81, 125, 77, .2); border-radius: 99px; color: #496543; background: rgba(132, 171, 102, .12); font-size: 9px; }

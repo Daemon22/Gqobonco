@@ -30,6 +30,7 @@ type Project = {
   category: string;
   tags: string[];
   image: string;
+  logoImage?: string;
   icon: LucideIcon;
   color: string;
   statusNote: string;
@@ -61,6 +62,7 @@ const projects: Project[] = [
     category: "Industry",
     tags: ["Industry", "Research", "Systems"],
     image: "/assets/project-sentinel.jpg",
+    logoImage: "/assets/production-sentinel-logo.webp",
     icon: Factory,
     color: "#e2bb65",
     statusNote:
@@ -71,11 +73,12 @@ const projects: Project[] = [
     name: "SmartWater Guardian",
     eyebrow: "Water monitoring",
     description:
-      "A proposed first physical proof of Production Sentinel, beginning with a planned three-zone water-monitoring demonstration.",
+      "A planned three-zone first proof of Production Sentinel, exploring differential-flow monitoring across water infrastructure.",
     stage: "Planned demonstration · not built",
     category: "Water",
     tags: ["Water", "Research", "Resilience"],
     image: "/assets/project-water.jpg",
+    logoImage: "/assets/smartwater-guardian-logo.webp",
     icon: Droplets,
     color: "#73cdbd",
     statusNote:
@@ -517,7 +520,11 @@ export default function Home() {
             <div className="dialog-art"><img src={activeProject.image} alt="" /><span className="dialog-art__shade" /></div>
             <div className="dialog-content">
               <div className="dialog-title-row">
-                <ProjectLogo project={activeProject} />
+                {activeProject.logoImage ? (
+                  <img className="project-dialog-logo" src={activeProject.logoImage} alt={`${activeProject.name} logo`} />
+                ) : (
+                  <ProjectLogo project={activeProject} />
+                )}
                 <div><p className="eyebrow">{activeProject.eyebrow}</p><h2 id="project-dialog-title">{activeProject.name}</h2></div>
               </div>
               <span className="project-status project-status--dialog"><i aria-hidden="true" />{activeProject.stage}</span>
