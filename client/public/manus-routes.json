@@ -1,0 +1,13 @@
+{
+  "routes": [
+    { "path": "/", "title": "Gqobonco — River of Knowledge" },
+    { "path": "/projects", "title": "Gqobonco Projects" },
+    { "path": "/projects/:slug", "title": "Gqobonco Project Details" },
+    { "path": "/research", "title": "Gqobonco Research" },
+    { "path": "/library", "title": "Gqobonco Knowledge Library" },
+    { "path": "/ecosystem", "title": "Gqobonco Ecosystem" },
+    { "path": "/about", "title": "About Gqobonco" },
+    { "path": "/community", "title": "Gqobonco Community" },
+    { "path": "/search", "title": "Search Gqobonco" }
+  ]
+}
