@@ -4,7 +4,7 @@ import { Link } from "wouter";
 import { ecosystem, projects, researchItems, type Project } from "@/data/catalog";
 
 const sectors = ["Technology", "Water", "Industry", "Human Communication", "Materials", "Intelligence"];
-const featuredSlugs = ["smartwater-guardian", "production-sentinel", "xhosa-nlp", "energy-guardian"];
+const featuredSlugs = ["smartwater-guardian", "production-sentinel", "glass-healing", "lizwi-hcip", "sovereign-intelligence"];
 
 function ProjectMark({ project }: { project: Project }) {
   const Icon = project.icon;
