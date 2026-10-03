@@ -36,6 +36,12 @@ export const researchItems: ResearchItem[] = [
  {title:"Sovereign Intelligence — Concept Framework",summary:"Sovereign Intelligence · ethical distributed architecture",projectSlug:"sovereign-intelligence",stage:"Research direction · not built",stageKind:"research",category:"Intelligence",image:"/assets/river-of-lineage.png"},
 ];
 
+export const publicResearch = [
+ { name:"Water resilience & infrastructure", category:"Public research", description:"Public studies, field work, and practical knowledge around water systems, conservation, and infrastructure resilience.", image:"/assets/project-water.jpg", href:"https://www.wrc.org.za/" },
+ { name:"African language technology", category:"Public research", description:"Research and open initiatives advancing language resources, communication tools, and digital inclusion across African languages.", image:"/assets/project-xhosa.jpg", href:"https://www.masakhane.io/" },
+ { name:"Open systems & responsible intelligence", category:"Public research", description:"Public work on open technology, distributed systems, responsible AI, and the social conditions around technical capability.", image:"/assets/data-flow-visual.png", href:"https://www.researchgate.net/" },
+];
+
 export const ecosystem = [
  {name:"HAEL Foundation",role:"Parent ecosystem",description:"The lineage foundation named in Gqobonco’s identity: We are the generation that remembers.",href:"https://daemon22.github.io/haelfoundation",icon:Leaf,monogram:"HAEL"},
  {name:"Orren",role:"Universal Mediator Language",description:"A companion project identified in the Gqobonco ecosystem as an access path for knowledge and connection.",href:"https://github.com/Daemon22/Orren",icon:Waves,monogram:"O"},

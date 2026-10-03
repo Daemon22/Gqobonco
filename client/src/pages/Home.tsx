@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { ArrowDown, ArrowRight, ChevronDown, ExternalLink, Search, Sun, Waves, Zap } from "lucide-react";
 import { Link } from "wouter";
-import { ecosystem, projects, researchItems, type Project } from "@/data/catalog";
+import { projects, researchItems, type Project } from "@/data/catalog";
 
 const sectors = ["Technology", "Water", "Industry", "Human Communication", "Materials", "Intelligence"];
 const featuredSlugs = ["smartwater-guardian", "production-sentinel", "sovereign-intelligence"];
@@ -62,7 +62,7 @@ export default function Home() {
         <div className="lineage-actions">
           <label className="lineage-search"><span className="sr-only">Search Gqobonco</span><input value={query} onChange={(e) => setQuery(e.target.value)} placeholder="Search" /><Search size={16} /></label>
           <button className="lineage-icon-button" type="button" aria-label="Toggle light mode"><Sun size={17} /></button>
-          <Link className="lineage-explore" href="/projects">Explore <ChevronDown size={14} /></Link>
+          <Link className="lineage-explore" href="/explore">Explore <ChevronDown size={14} /></Link>
         </div>
       </header>
 
@@ -74,7 +74,7 @@ export default function Home() {
             <p className="lineage-kicker">GQOBONCO RESEARCH &amp; PROJECTS PLATFORM</p>
             <h1>The River of<br /><em>Lineage</em></h1>
             <p className="lineage-hero-dek">Knowledge flows across generations, disciplines and projects — connecting people, ideas and possibilities.</p>
-            <Link className="lineage-outline-button" href="/projects">Explore the collection <ArrowRight size={16} /></Link>
+          <Link className="lineage-outline-button" href="/explore">Explore the collection <ArrowRight size={16} /></Link>
           </div>
           <div className="lineage-time-axis"><span>PAST</span><i /><span>PRESENT</span><i /><span>FUTURE</span></div>
           <ArrowDown className="lineage-hero-down" size={19} />
@@ -83,7 +83,7 @@ export default function Home() {
         <section className="lineage-intro-band">
           <div><p className="lineage-kicker dark">RESEARCH &amp; PROJECTS</p><h2>Independent Works.<br />One Living Ecosystem.</h2></div>
           <div className="lineage-intro-copy"><p>GQOBONCO brings together a growing collection of research, projects and ideas. Each work is an independent exploration, organized by sector, topic or category. This is not a fixed taxonomy — it evolves as new knowledge, technologies and ideas emerge.</p></div>
-          <Link className="lineage-sector-callout" href="/projects"><Waves size={21} /><span><small>EXPLORE BY SECTOR</small>Browse projects and research across different domains, from technology to culture.</span><ArrowRight size={19} /></Link>
+          <Link className="lineage-sector-callout" href="/explore"><Waves size={21} /><span><small>EXPLORE THE RESEARCH FIELD</small>Compare public research with GOBONCO’s own projects and directions.</span><ArrowRight size={19} /></Link>
           <div className="lineage-sector-list">
             {sectors.map((item) => <button key={item} className={sector === item ? "is-selected" : ""} type="button" onClick={() => setSector(sector === item ? "All" : item)}><span className="lineage-sector-orb"><Zap size={15} /></span>{item}</button>)}
             <button type="button" onClick={() => setSector("All")}>+ More <ArrowRight size={14} /></button>
@@ -103,7 +103,7 @@ export default function Home() {
 
         <section className="lineage-connections">
           <div className="lineage-connections-copy"><p className="lineage-kicker">LINEAGE &amp; CONNECTIONS</p><h2>Ideas Intertwine.<br />Progress Accelerates.</h2><p>Every project, research thread and idea is part of a larger whole. Explore how different domains, concepts and discoveries influence one another.</p><Link className="lineage-outline-button" href="/ecosystem">Explore the knowledge map <ArrowRight size={16} /></Link></div>
-          <div className="lineage-constellation"><div className="lineage-constellation-lines" /><div className="lineage-constellation-core"><img src="/assets/gqobonco-emblem.png" alt="Gqobonco lineage" /></div>{ecosystem.slice(0, 4).map((item, index) => <div key={item.name} className={`lineage-node node-${index}`}><span>{item.monogram}</span><small>{item.name}</small></div>)}</div>
+          <div className="lineage-flow-art"><img src="/assets/data-flow-visual.png" alt="Flowing lines of knowledge, systems, and connected ideas" /><span>Knowledge flows. Capability returns.</span></div>
         </section>
       </main>
 

@@ -1,6 +1,7 @@
 {
   "routes": [
     { "path": "/", "title": "Gqobonco — River of Knowledge" },
+    { "path": "/explore", "title": "Explore Gqobonco Research" },
     { "path": "/projects", "title": "Gqobonco Projects" },
     { "path": "/projects/:slug", "title": "Gqobonco Project Details" },
     { "path": "/research", "title": "Gqobonco Research" },
