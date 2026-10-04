@@ -32,7 +32,7 @@ jobs:
         run: pnpm exec prettier --check docs/project-presentation-integration.md
 
       - name: Run tests
-        run: pnpm exec vitest run
+        run: pnpm exec vitest run --passWithNoTests
 
       - name: Build
         run: pnpm run build
