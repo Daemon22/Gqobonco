@@ -107,7 +107,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="lineage-footer"><Link className="lineage-brand" href="/"><img src="assets/gqobonco-emblem.png" alt="Gqobonco" /><span><strong>GQOBONCO</strong><small>THE RIVER OF LINEAGE</small></span></Link><nav><Link href="/research">Research</Link><Link href="/projects">Projects</Link><Link href="/ecosystem">Ideas</Link><Link href="/library">Archive</Link><Link href="/about">About</Link></nav><div className="lineage-footer-note">Preserving wisdom.<br /><em>Building tomorrow.</em></div><a className="lineage-footer-github" href="https://github.com/Daemon22/Gqobonco" target="_blank" rel="noreferrer"><ExternalLink size={14} /> Project source &amp; downloads on GitHub</a></footer>
+      <footer className="lineage-footer"><Link className="lineage-brand" href="/"><img src={assetUrl("assets/brandkit/02-gqobonco-logo-the-river-of-lineage.jpg")} alt="Gqobonco" /><span><strong>GQOBONCO</strong><small>THE RIVER OF LINEAGE</small></span></Link><nav><Link href="/research">Research</Link><Link href="/projects">Projects</Link><Link href="/ecosystem">Ideas</Link><Link href="/library">Archive</Link><Link href="/about">About</Link></nav><div className="lineage-footer-note">Preserving wisdom.<br /><em>Building tomorrow.</em></div><a className="lineage-footer-github" href="https://github.com/Daemon22/Gqobonco" target="_blank" rel="noreferrer"><ExternalLink size={14} /> Project source &amp; downloads on GitHub</a></footer>
     </div>
   );
 }
