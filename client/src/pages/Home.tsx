@@ -1,7 +1,7 @@
 import { useMemo, useState } from "react";
 import { ArrowDown, ArrowRight, ChevronDown, ExternalLink, Search, Sun, Waves, Zap } from "lucide-react";
 import { Link } from "wouter";
-import { projects, researchItems, type Project } from "@/data/catalog";
+import { assetUrl, projects, researchItems, type Project } from "@/data/catalog";
 
 const sectors = ["Technology", "Water", "Industry", "Human Communication", "Materials", "Intelligence"];
 const featuredSlugs = ["smartwater-guardian", "production-sentinel", "glass-healing", "lizwi-hcip", "sovereign-intelligence", "hael-studio"];
@@ -10,7 +10,7 @@ function ProjectMark({ project }: { project: Project }) {
   const Icon = project.icon;
   return (
     <span className="lineage-project-mark" style={{ "--mark": project.color } as React.CSSProperties}>
-      {project.logoImage ? <img src={project.logoImage} alt={project.logoAlt ?? `${project.name} logo`} /> : <Icon size={22} strokeWidth={1.4} aria-hidden="true" />}
+      {project.logoImage ? <img src={assetUrl(project.logoImage)} alt={project.logoAlt ?? `${project.name} logo`} /> : <Icon size={22} strokeWidth={1.4} aria-hidden="true" />}
     </span>
   );
 }
@@ -19,7 +19,7 @@ function FeaturedCard({ project, index }: { project: Project; index: number }) {
   return (
     <Link className="lineage-project-card" href={`/projects/${project.slug}`}>
       <div className="lineage-card-image">
-        <img src={project.presentationImage ?? project.image} alt={`${project.name} presentation visual`} />
+        <img src={assetUrl(project.presentationImage ?? project.image)} alt={`${project.name} presentation visual`} />
         <div className="lineage-card-image-shade" />
         <ProjectMark project={project} />
         <span className="lineage-card-index">0{index + 1}</span>
@@ -49,7 +49,7 @@ export default function Home() {
     <div className="lineage-home">
       <header className="lineage-topbar">
         <Link className="lineage-brand" href="/">
-          <img src="assets/gqobonco-emblem.png" alt="Gqobonco" />
+          <img src={assetUrl("assets/brandkit/02-gqobonco-logo-the-river-of-lineage.jpg")} alt="Gqobonco" />
           <span><strong>GQOBONCO</strong><small>THE RIVER OF LINEAGE</small></span>
         </Link>
         <nav className="lineage-nav" aria-label="Primary navigation">
@@ -98,12 +98,12 @@ export default function Home() {
 
         <section className="lineage-archive-band">
           <div className="lineage-archive-heading"><p className="lineage-kicker dark">RESEARCH ARCHIVE</p><h2>Knowledge Builds<br />Further Knowledge.</h2><p>Explore research papers, technical reports, datasets and other knowledge artifacts from GQOBONCO’s growing archive.</p><Link className="lineage-dark-button" href="/library">Browse all documents <ArrowRight size={15} /></Link></div>
-          <div className="lineage-archive-list">{researchItems.slice(0, 5).map((item) => <Link key={item.title} href={`/projects/${item.projectSlug}`} className="lineage-archive-item"><img src={item.image} alt="" /><span><strong>{item.title}</strong><small>{item.summary} · {item.stage}</small></span><span className="lineage-archive-view">View <ArrowRight size={14} /></span></Link>)}</div>
+          <div className="lineage-archive-list">{researchItems.slice(0, 5).map((item) => <Link key={item.title} href={`/projects/${item.projectSlug}`} className="lineage-archive-item"><img src={assetUrl(item.image)} alt="" /><span><strong>{item.title}</strong><small>{item.summary} · {item.stage}</small></span><span className="lineage-archive-view">View <ArrowRight size={14} /></span></Link>)}</div>
         </section>
 
         <section className="lineage-connections">
           <div className="lineage-connections-copy"><p className="lineage-kicker">LINEAGE &amp; CONNECTIONS</p><h2>Ideas Intertwine.<br />Progress Accelerates.</h2><p>Every project, research thread and idea is part of a larger whole. Explore how different domains, concepts and discoveries influence one another.</p><Link className="lineage-outline-button" href="/ecosystem">Explore the knowledge map <ArrowRight size={16} /></Link></div>
-          <div className="lineage-flow-art"><img src="assets/data-flow-visual.png" alt="Flowing lines of knowledge, systems, and connected ideas" /><span>Knowledge flows. Capability returns.</span></div>
+          <div className="lineage-flow-art"><img src={assetUrl("assets/data-flow-visual.png")} alt="Flowing lines of knowledge, systems, and connected ideas" /><span>Knowledge flows. Capability returns.</span></div>
         </section>
       </main>
 
