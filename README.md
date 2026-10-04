@@ -1,5 +1,12 @@
 # Gqobonco: The River of Lineage
 
+## Live website
+
+**The public website is live at [daemon22.github.io/Gqobonco](https://daemon22.github.io/Gqobonco/).**
+
+This website is deployed from this repository’s `main` branch through GitHub Pages. The deployment workflow is [`.github/workflows/pages.yml`](.github/workflows/pages.yml), and the Pages configuration is set to workflow deployment with HTTPS enforced.
+
+
 **Umfula womnombo — Where all information, research, and intelligence flow—past, present, and future.**
 
 Gqobonco is the Supreme Prince of Research, Intelligence, and Information within the HAEL Foundation ecosystem. It is not a project—it is a living system where ancestral wisdom meets contemporary research, where historical records flow alongside predictive intelligence, and where African knowledge reclaims its rightful place in the global information landscape.
