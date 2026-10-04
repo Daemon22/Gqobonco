@@ -1,5 +1,7 @@
 import { Brain, Cpu, Droplets, Factory, Gem, Languages, Leaf, Users, Waves, Zap, type LucideIcon } from "lucide-react";
 
+export const assetUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\/+/, "")}`;
+
 export const repositoryUrl = "https://github.com/Daemon22/Gqobonco";
 export const registryUrl = `${repositoryUrl}/blob/main/docs/research-registry.md`;
 export const founder = {
