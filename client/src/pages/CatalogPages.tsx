@@ -12,7 +12,63 @@ export function ProjectDetailPage() { const [,params]=useRoute("/projects/:slug"
 export function ResearchPage() { return <CatalogShell title="Research, with provenance." intro="Research is presented as a living index: each entry links back to the project it extends and makes its maturity visible."><div className="research-grid">{researchItems.map(item=><article className="research-index-card" key={item.title}><img src={assetUrl(item.image)} alt=""/><div><div className="catalog-card-top"><span>{item.category}</span><StagePill stage={item.stage} kind={item.stageKind}/></div><h2>{item.title}</h2><p>{item.summary}</p><Link href={`/projects/${item.projectSlug}`}>Open related project <ArrowRight size={15}/></Link></div></article>)}</div></CatalogShell>; }
 export function LibraryPage() { const resources=[['Public Research Registry','Project stages, current public disclosures, and the boundary between research plans and validated results.', 'https://github.com/Daemon22/Gqobonco/blob/main/docs/research-registry.md'],['Gqobonco Project Overview','The public README: purpose, key initiative, ecosystem context, and ways to contribute.','https://github.com/Daemon22/Gqobonco/blob/main/README.md'],['Project source & downloads on GitHub','Optional source access for people who want to inspect, follow, or download public project files.','https://github.com/Daemon22/Gqobonco'],['Contribute to Gqobonco','Open the contribution path for research, documentation, and website improvements.','https://github.com/Daemon22/Gqobonco/issues/new'],['Cross-repository presentation guide','How project repositories connect their public summaries, marks, status, and project routes to this catalog.','https://github.com/Daemon22/Gqobonco/blob/main/docs/project-presentation-integration.md']]; return <CatalogShell title="Knowledge library." intro="A grounded public reading room for documents, registry entries, and source material connected to Gqobonco’s work."><div className="library-list">{resources.map(([title,desc,href])=><a className="library-row" href={href} target="_blank" rel="noreferrer" key={title}><span className="library-icon"><BookOpen size={20}/></span><span><b>{title}</b><small>{desc}</small></span><ExternalLink size={16}/></a>)}</div></CatalogShell>; }
 export function EcosystemPage() { return <CatalogShell title="The wider living system." intro="Gqobonco’s catalog is distinct from its ecosystem relationships. These companion projects are linked where their roles are documented publicly."><div className="ecosystem-grid">{ecosystem.map(item=><a className="ecosystem-card" href={item.href} target="_blank" rel="noreferrer" key={item.name}><LogoMark item={item}/><span className="section-kicker">{item.role}</span><h2>{item.name}</h2><p>{item.description}</p><ExternalLink size={16}/></a>)}</div></CatalogShell>; }
-export function AboutPage() { return <CatalogShell title="About GOBONCO." intro="The River of Lineage. Nourishing the Collective Mind."><div className="about-grid"><div><span className="section-kicker">{founder.canonicalLine}</span><h2>Knowledge flows in every direction.</h2><p>{founder.statement}</p><p>{founder.mediumBio}</p><p><em>“We are the generation that remembers.”</em></p></div><div className="about-principles"><div><b>Nature</b><span>Land, water, culture, knowledge, and primary production are the roots.</span></div><div><b>People</b><span>Capability returns to the communities and systems that sustain it.</span></div><div><b>Technology</b><span>Build what must exist, with the hand remaining responsible for the blade.</span></div><div><b>Founder</b><span>{founder.name} · {founder.location} · Electrical Engineering student.</span></div></div></div></CatalogShell>; }
+export function AboutPage() {
+  const featuredSlugs = new Set(["smartwater-guardian", "production-sentinel", "glass-healing", "lizwi-hcip"]);
+  const tributaries = projects.filter((project) => featuredSlugs.has(project.slug));
+
+  return (
+    <CatalogShell title="About GOBONCO." intro="The River of Lineage. Nourishing the Collective Mind.">
+      <section className="about-story">
+        <div className="about-story-copy">
+          <span className="section-kicker">A living foundation</span>
+          <h2>Knowledge flows in every direction.</h2>
+          <p>{founder.statement}</p>
+        </div>
+        <aside className="about-story-note">
+          <span className="section-kicker">Our promise</span>
+          <p>“We are the generation that remembers.”</p>
+          <small>{founder.name} · {founder.location}</small>
+        </aside>
+      </section>
+
+      <section className="about-values-section" aria-label="Gqobonco principles">
+        <div className="about-section-heading">
+          <span className="section-kicker">What holds the work together</span>
+          <p>Different fields, one responsibility: return knowledge and capability to the systems that sustain us.</p>
+        </div>
+        <div className="about-principles">
+          <div><b>Nature</b><span>Land, water, culture, knowledge, and primary production are the roots.</span></div>
+          <div><b>People</b><span>Capability should return to the communities and systems that sustain it.</span></div>
+          <div><b>Technology</b><span>Build what must exist, with the hand remaining responsible for the blade.</span></div>
+        </div>
+      </section>
+
+      <section className="about-project-section">
+        <div className="about-project-heading">
+          <div>
+            <span className="section-kicker">The tributaries</span>
+            <h2>One river, many independent works.</h2>
+            <p>Each project keeps its own identity and maturity. GOBONCO gives the work a shared place to be discovered, understood, and connected.</p>
+          </div>
+          <Link className="catalog-cta" href="/projects">Explore all projects <ArrowRight size={15} /></Link>
+        </div>
+        <div className="catalog-project-grid">
+          {tributaries.map((project) => <ProjectCard key={project.slug} project={project} />)}
+        </div>
+      </section>
+
+      <section className="about-connect">
+        <div>
+          <span className="section-kicker">A shared public path</span>
+          <h2>Building a related project?</h2>
+          <p>Public repositories can connect their project summary, approved images, current stage, and detail page to this collection.</p>
+        </div>
+        <a className="catalog-cta secondary" href="https://github.com/Daemon22/Gqobonco/blob/main/docs/project-presentation-integration.md" target="_blank" rel="noreferrer">Read the integration guide <ExternalLink size={15} /></a>
+      </section>
+    </CatalogShell>
+  );
+}
+
 export function CommunityPage() { return <CatalogShell title="Join the river." intro="Gqobonco grows through research, documentation, thoughtful critique, and contributions that help African knowledge reclaim authorship of its digital future."><div className="community-panel"><h2>Bring a project, research note, or question.</h2><p>Start with the public repository, browse the research registry, or open an issue to contribute to the collection.</p><div><a className="catalog-cta" href="https://github.com/Daemon22/Gqobonco/issues/new" target="_blank" rel="noreferrer">Open a contribution <ArrowRight size={15}/></a><Link className="catalog-cta secondary" href="/library">Read the library <ArrowRight size={15}/></Link></div></div></CatalogShell>; }
 export function SearchPage() { const [query,setQuery]=useState(""); const [location]=useLocation(); const results=useMemo(()=>{const q=query.toLowerCase(); return projects.filter(p=>`${p.name} ${p.category} ${p.description} ${p.tags.join(" ")}`.toLowerCase().includes(q));},[query]); return <CatalogShell title="Search the collection." intro="Find projects and research by name, sector, stage, or theme."><div className="catalog-search"><SearchIcon size={19}/><input autoFocus placeholder="Search projects, research, knowledge…" value={query} onChange={e=>setQuery(e.target.value)}/></div>{query && <div className="search-results">{results.map(p=><Link href={`/projects/${p.slug}`} key={p.slug}><LogoMark item={p}/><span><b>{p.name}</b><small>{p.category} · {p.stage}</small></span><ArrowRight size={15}/></Link>)}{!results.length&&<p>No matching work yet.</p>}</div>}{!query&&<p className="search-hint">Try “water”, “language”, “industry”, or “future”.</p>}</CatalogShell>; }
 export function NotFoundPage() { return <CatalogShell title="The current does not flow here." intro="This page is not part of the public river yet."><Link className="catalog-cta" href="/projects">Return to projects <ArrowRight size={15}/></Link></CatalogShell>; }

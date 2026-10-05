@@ -546,3 +546,32 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 
 .brandkit-provenance { margin: 0 0 20px; color: #aebcae; font-size: 12px; line-height: 1.6; }
 .catalog-identity-note { display: block; margin-top: 9px; color: #d7c17f; font-size: 10px; line-height: 1.5; }
+
+
+/* About page: connect the foundation story to its public project tributaries. */
+.about-story { display:grid; grid-template-columns:minmax(0,1.3fr) minmax(250px,.7fr); gap:clamp(28px,6vw,82px); align-items:stretch; margin-bottom:76px; }
+.about-story-copy { max-width:760px; align-self:center; }
+.about-story-copy h2,.about-project-heading h2,.about-connect h2 { margin:12px 0 20px; color:#f3dfa0; font:500 clamp(38px,5vw,58px)/.98 'Cormorant Garamond',serif; }
+.about-story-copy p,.about-project-heading p,.about-connect p { color:#afc0b0; font-size:15px; line-height:1.85; }
+.about-story-note { display:flex; flex-direction:column; justify-content:space-between; gap:26px; padding:clamp(26px,4vw,44px); border:1px solid rgba(212,171,84,.35); border-radius:8px; background:radial-gradient(circle at 15% 0%,rgba(22,74,55,.8),rgba(3,25,20,.88)); }
+.about-story-note > p { margin:0; color:#f3dfa0; font:500 clamp(30px,4vw,44px)/1.05 'Cormorant Garamond',serif; }
+.about-story-note small { color:#afc0b0; font-size:12px; line-height:1.7; }
+.about-values-section { margin-bottom:82px; }
+.about-section-heading { display:grid; grid-template-columns:1fr 1fr; align-items:end; gap:30px; margin-bottom:22px; }
+.about-section-heading p { max-width:520px; margin:0; color:#afc0b0; font-size:14px; line-height:1.8; }
+.about-principles { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.about-principles div { min-height:150px; padding:24px; border:1px solid rgba(212,171,84,.22); border-left:2px solid var(--gold); border-radius:0 8px 8px 0; background:rgba(212,171,84,.055); }
+.about-principles b { margin-bottom:12px; }
+.about-principles span { font-size:13px; line-height:1.75; }
+.about-project-section { margin-bottom:72px; }
+.about-project-heading { display:flex; justify-content:space-between; align-items:end; gap:28px; margin-bottom:28px; }
+.about-project-heading > div { max-width:720px; }
+.about-project-heading h2 { margin-bottom:14px; }
+.about-project-heading p { margin:0; }
+.about-project-heading .catalog-cta { flex:none; }
+.about-connect { display:flex; justify-content:space-between; align-items:center; gap:30px; padding:clamp(28px,5vw,48px); border:1px solid rgba(212,171,84,.35); border-radius:8px; background:radial-gradient(circle at 15% 0%,#164a37,var(--forest-2)); }
+.about-connect h2 { margin-bottom:12px; font-size:clamp(32px,4vw,44px); }
+.about-connect p { max-width:660px; margin-bottom:0; }
+.about-connect .catalog-cta { flex:none; margin:0; }
+@media (max-width:1000px) { .about-story { grid-template-columns:1fr; }.about-story-note { min-height:210px; }.about-principles { grid-template-columns:1fr; }.about-principles div { min-height:0; }.about-project-heading { align-items:flex-start; flex-direction:column; }.about-connect { align-items:flex-start; flex-direction:column; }.about-section-heading { grid-template-columns:1fr; gap:8px; } }
+@media (max-width:640px) { .about-story { margin-bottom:54px; }.about-values-section { margin-bottom:58px; }.about-project-section { margin-bottom:54px; }.about-project-heading .catalog-cta { align-self:flex-start; }.about-connect { padding:26px 22px; } }
