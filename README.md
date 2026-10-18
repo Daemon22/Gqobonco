@@ -136,7 +136,7 @@ This project is part of the HAEL Foundation ecosystem. See LICENSE file for deta
 
 ## Learn More
 
-- [HAEL Foundation](https://daemon22.github.io/haelfoundation)
+- [HAEL Foundation repository](https://github.com/Daemon22/haelfoundation)
 - [Orren](https://github.com/Daemon22/Orren)
 - [Manya](https://github.com/Daemon22/Manya)
 - [MANYA Intelligence OS](https://github.com/manya-hael/intelligence-os)

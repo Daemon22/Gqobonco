@@ -580,3 +580,7 @@ button:focus-visible, a:focus-visible, input:focus-visible { outline: 2px solid 
 .about-connect .catalog-cta { flex:none; margin:0; }
 @media (max-width:1000px) { .about-story { grid-template-columns:1fr; }.about-story-note { min-height:210px; }.about-principles { grid-template-columns:1fr; }.about-principles div { min-height:0; }.about-project-heading { align-items:flex-start; flex-direction:column; }.about-connect { align-items:flex-start; flex-direction:column; }.about-section-heading { grid-template-columns:1fr; gap:8px; } }
 @media (max-width:640px) { .about-story { margin-bottom:54px; }.about-values-section { margin-bottom:58px; }.about-project-section { margin-bottom:54px; }.about-project-heading .catalog-cta { align-self:flex-start; }.about-connect { padding:26px 22px; } }
+
+.catalog-live-site-badge { display:inline-flex; align-items:center; gap:5px; width:max-content; margin:0 0 12px; padding:5px 8px; border:1px solid rgba(212,171,84,.45); border-radius:999px; color:var(--gold-light); background:rgba(212,171,84,.08); font-size:8px; letter-spacing:.1em; text-transform:uppercase; }
+.ecosystem-card-link-label { display:inline-flex; width:fit-content; margin-top:12px; color:var(--gold-light); font-size:9px; letter-spacing:.08em; text-transform:uppercase; }
+.project-portal-actions .source-link { margin:8px 0; }
